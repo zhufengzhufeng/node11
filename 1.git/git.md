@@ -144,3 +144,32 @@ git branch -D 分支名
 ```
 
 > 不能自己删自己
+
+## 创建分支并且切换分支
+```
+git branch dev
+git checkout dev
+git checkout -b dev
+```
+
+## 合并分支
+- 要切换到master身上来合并dev
+```
+git merge dev
+```
+
+> 比如说master上在slider里写了一个1，dev中slider写了2
+
+## 从工作区直接提交到历史区
+- 不支持首次提交，如果文件没有加到过缓存区中是不能使用这种方式的
+```
+git commit -a -m'sliderdev'
+```
+
+## 产生冲突
+
+- 1.在dev分支中改变了slider.js
+改成了sliderdev,进行提交
+- 2.在master分支中改变slider.js
+改成 slidermaster,进行提交
+- 3.合并产生冲突，删除掉>>>>> ======  <<<<<<再次提交
