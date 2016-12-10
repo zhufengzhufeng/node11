@@ -121,3 +121,19 @@ git reflog
 ```
 
 > 回到过去和未来
+
+## 分支管理
+- 查看所有分支
+```
+git branch 
+```
+- 创建分支
+```
+git branch 分支名
+```
+- 切换分支
+```
+git checkout dev
+```
+
+> 相当于把master复制了一份，提交到dev上master才看不到，相当于dev把100块钱放到自己家了，那master就无法看到了
