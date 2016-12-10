@@ -172,3 +172,4 @@ git commit -a -m'sliderdev'
 - 2.在master分支中改变slider.js
 改成 slidermaster,进行提交
 - 3.合并产生冲突，删除掉>>>>> ======  <<<<<<再次提交
+
