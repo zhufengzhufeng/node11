@@ -137,3 +137,10 @@ git checkout dev
 ```
 
 > 相当于把master复制了一份，提交到dev上master才看不到，相当于dev把100块钱放到自己家了，那master就无法看到了
+
+## 删除分支
+```
+git branch -D 分支名
+```
+
+> 不能自己删自己
