@@ -167,7 +167,6 @@ git commit -a -m'sliderdev'
 ```
 
 ## 产生冲突
-
 - 1.在dev分支中改变了slider.js
 改成了sliderdev,进行提交
 - 2.在master分支中改变slider.js
