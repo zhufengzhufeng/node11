@@ -1,7 +1,7 @@
 function read(cb) {
     setTimeout(function () {
         cb();
-    },4000)
+    },4000);
 }
 function write() {
     console.log('写入');

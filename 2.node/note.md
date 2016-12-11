@@ -37,3 +37,19 @@ node的主线程永远是单线程的，
 
 ## 全局对象
 - 写代码时，可以在任意一个地方访问
+
+
+## global
+- global
+- process process.pid/process.exit()/process.kill()
+    - process.nextTick 当前队列的底部
+    - process.cwd() 当前工作目录 
+    - process.chdir()改变目录
+- clearInterval/set
+- clearTimeout/set
+- setImmediate/clearImmediate 第二个小本上的立即
+- console  log/warn/error/info/time/timeEnd
+- Buffer
+## 形参
+- __filename 一旦产生就不能更改，执行文件被传入的参数
+- __dirname
