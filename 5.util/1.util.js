@@ -10,12 +10,23 @@ Parent.prototype.eat = function () {
   console.log('eat');
 };
 function Child() {}
+//1.在子类原型上增加原型链指向父类原型
+//Child.prototype.__proto__ = Parent.prototype;
+//2.Object.create
+//Child.prototype = Object.create(Parent.prototype);
 Child.prototype.drink = function () {
     console.log('drink');
 };
-Child.prototype = Parent.prototype;
-// Child.prototype = new Parent();
+//3.setPrototypeOf
+Object.setPrototypeOf(Child.prototype,Parent.prototype);
+// util.inherits(Child,Parent);
 var child = new Child();
-var parent = new Parent();
 console.log(child.eat);
+console.log(child.drink);
+//3.util提供一些类型判断的方法
+console.log(util.isArray([]));
+console.log(util.isRegExp([]));
+console.log(util.isBoolean([]));
+//继承和判断
+
 
