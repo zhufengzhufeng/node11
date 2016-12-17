@@ -25,13 +25,40 @@ var buffer = new Buffer(arr);//不识别都是0
 console.log(buffer);
 
 //2) buffer的常用方法
-var buffer = new Buffer(6);
+//1.write
+var buffer = new Buffer(12);
 var str = '珠峰培';
 var str1 = '训';
 //string写入的内容
 //offset写入的偏移量
 //length写入的长度
 //encoding编码格式
-buffer.write(str,0,6,'utf8');
+buffer.write(str1,9); //前面预留出0-8 9个
+buffer.write(str,0);
 console.log(buffer.toString());//将buffer转换成字符串
 //先写str1 在写str 输出字符珠峰培训
+//2.copy(将多个buffer拷贝到一个大buffer上)
+var buffer = new Buffer(12);
+var buffer1 = new Buffer('珠峰');
+var buffer2 = new Buffer('培训');
+//targetBuffer 拷贝的目标
+//targetStart 目标的开始位置
+//sourceStart 要拷贝内容的开始
+//sourceEnd 要拷贝内容的结束  后两个参数可以省略，默认从头拷贝到尾部
+buffer1.copy(buffer,0);
+buffer2.copy(buffer,6);
+console.log(buffer.toString());
+//3)拥有数组的部分方法，有length 有forEach 有slice 有下标
+var buffer = new Buffer([1,2,3]);
+//相当于slice时产生一个新buffer，但是新buffer和老buffer里面装的东西是一样的
+var newBuffer = buffer.slice(0);
+/*var newBuffer = buffer.slice(0,1); //截取的不会产生新buffer
+newBuffer[0] = 4;
+console.log(buffer);*/
+/*
+var newArr = [100];
+var arr = [newArr,2,3];
+var a = arr.slice(0);//slice克隆的是地址
+newArr[0] = 200;
+console.log(a);
+// [[100],2,3]  [[200],2,3]*/
