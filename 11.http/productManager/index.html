@@ -38,11 +38,13 @@
     xhr.responseType = 'json';
     function getData(datas) {
         var str = '';
+        //点击修改当前行变成输入框，删除变确认，修改变取消
         datas.forEach(function (item) {
             str += `<tr class="text-center">
                         <td>${item.name}</td>
                         <td>${item.price}</td>
-                        <td><button class="btn btn-danger" onclick="remove(${item.id})">删除</button></td>
+                        <td>
+                        <button class="btn btn-danger" onclick="remove(${item.id})">删除</button>
                        </tr>`;
         });
         tbody.innerHTML = str;
