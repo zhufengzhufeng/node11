@@ -10,6 +10,19 @@ http.createServer(function (req,res) {
         fs.createReadStream('./index.html').pipe(res);
     }else if(pathname == '/allProduct'){//响应全部数据
         res.end(JSON.stringify(products));
+    }else if(pathname == '/addProduct'){
+        //获取请求体中的数据
+        var str = '';
+        req.on('data',function (data) { //获取send过来的数据
+            str+=data;
+        });
+        req.on('end',function () {
+            var product = JSON.parse(str);//将请求体解析成对象
+            product.id = Math.random();//增加id属性
+            products.push(product);//丢到数组里
+            res.end(JSON.stringify(products));//将数组响应给浏览器端
+        });
+
     }else{
         fs.exists('.'+pathname,function (flag) {
             if(flag){
