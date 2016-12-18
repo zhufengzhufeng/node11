@@ -9,12 +9,11 @@ var arr = [];
 rs.on('data',function (data) {//只要你监听data事件内部会不停的发射data事件
     //str+=data;//将buffer进行拼接
     arr.push(data);
-    rs.pause();
-    setTimeout(function () {
-        rs.resume(); //恢复的是on data 事件
-    },1000);
 });
-
+rs.pause();
+setTimeout(function () {
+    rs.resume(); //恢复的是on data 事件
+},1000);
 //水都流出来了的事件
 rs.on('end',function () {
     console.log(Buffer.concat(arr).toString());
