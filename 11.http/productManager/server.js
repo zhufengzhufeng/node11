@@ -2,14 +2,14 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var mime = require('mime');
+var products = [{name:'iphone8',price:8888,id:1},{name:'iphone9',price:7777,id:2}];
 http.createServer(function (req,res) {
     var pathname = url.parse(req.url,true).pathname;
     if(pathname == '/'){
         res.setHeader('Content-Type','text/html;charset=utf8');
         fs.createReadStream('./index.html').pipe(res);
-    }else if(pathname=='/clock'){
-        var date = new Date().toLocaleString();
-        res.end(JSON.stringify({date:date}));
+    }else if(pathname == '/allProduct'){//响应全部数据
+        res.end(JSON.stringify(products));
     }else{
         fs.exists('.'+pathname,function (flag) {
             if(flag){

@@ -26,13 +26,15 @@ Man.prototype.once = function (eventName,callback) {
         this.removeListener(eventName,one);
     }
     this.on(eventName,one);
+    one.listen = callback
 };
 Man.prototype.removeListener = function (eventName,callback) {
-    //{'有钱':[]}
+    //{'有钱':[byPack,one.listen]}
     if(this._events[eventName]){
         this._events[eventName] = this._events[eventName].filter(function (item) {
-            return item!=callback;
-        })
+            //&& 有一个为false就为false ||一个为true就ok
+            return item!=callback&&item.listen!=callback;
+        });
     }
 };
 
