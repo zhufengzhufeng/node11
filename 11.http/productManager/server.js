@@ -22,7 +22,12 @@ http.createServer(function (req,res) {
             products.push(product);//丢到数组里
             res.end(JSON.stringify(products));//将数组响应给浏览器端
         });
-
+    }else if(pathname == '/removeProduct'){
+        var productId = url.parse(req.url,true).query.id;//取出查询字符串种的id
+        products = products.filter(function (item) {
+            return item.id != productId;
+        });
+        res.end(JSON.stringify(products));
     }else{
         fs.exists('.'+pathname,function (flag) {
             if(flag){

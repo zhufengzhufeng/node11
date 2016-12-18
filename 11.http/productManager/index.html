@@ -42,7 +42,7 @@
             str += `<tr class="text-center">
                         <td>${item.name}</td>
                         <td>${item.price}</td>
-                        <td><button class="btn btn-danger">删除</button></td>
+                        <td><button class="btn btn-danger" onclick="remove(${item.id})">删除</button></td>
                        </tr>`;
         });
         tbody.innerHTML = str;
@@ -64,6 +64,17 @@
             document.getElementById('name').value = document.getElementById('price').value=''
         };
         xhr.send(JSON.stringify(obj));
+    }
+
+    //删除 /removeProduct?id=3 服务端需要删除指定的id 把最新的数据返回
+    function remove(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+        xhr.open('DELETE','/removeProduct?id='+id,true);
+        xhr.onload = function () {
+            getData(xhr.response);
+        };
+        xhr.send();
     }
 
 </script>
