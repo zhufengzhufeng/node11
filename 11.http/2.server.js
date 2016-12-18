@@ -12,5 +12,6 @@ http.createServer(function (req,res) {
     });*/
     //流 分段读取一次64k
     fs.createReadStream('./1.start.html').pipe(res);
+    //如果要改变文件中的内容响应回数据stream的方式就不适合了
 }).listen(8080,'localhost');
 
