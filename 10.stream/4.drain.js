@@ -5,7 +5,7 @@ var index = 0; //从0写到9
 function eat() {
     var flag = true;
     while(index<10&&flag){
-        flag =  ws.write(index+'');//buffer or string
+        flag = ws.write(index+'');//buffer or string
         index++;
     }
 }
