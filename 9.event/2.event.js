@@ -45,7 +45,7 @@ function buyCar(who) {
 }
 //写一个once方法，目的是绑定后，发射emit事件，绑定的函数被移除掉，在次触发，不会执行
 man.once('有钱',buyPack);//{有钱:[]}
-man.removeListener('有钱',buyPack);
+man.removeListener('有钱',buyPack);//{有钱:[one]},得改once和emit
 man.emit('有钱','妹子');
 //on还要保留原有的逻辑 仍然是绑定一次可以触发多次
 //once 绑定一次触发多次只执行一次
