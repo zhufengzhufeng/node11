@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+时间
+<div id="clock">
+
+</div>
+<script>
+    //创建xhr XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    //打开xhr
+    setInterval(getTime,1000);
+    getTime();
+    function getTime() {
+        xhr.open('GET','/clock',true);
+        //监听状态改变事件
+        /*xhr.onreadystatechange = function () {
+         if(this.readyState == 4 && this.status==200){}
+         }*/
+        xhr.responseType = 'json';//设置类型
+        xhr.onload = function () {
+            //responseText  response 如果是json格式response
+            clock.innerHTML = xhr.response.date;
+        };
+        xhr.send();
+    }
+
+
+</script>
+</body>
+</html>

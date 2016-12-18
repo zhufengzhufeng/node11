@@ -6,7 +6,10 @@ http.createServer(function (req,res) {
     var pathname = url.parse(req.url,true).pathname;
     if(pathname == '/'){
         res.setHeader('Content-Type','text/html;charset=utf8');
-        fs.createReadStream('./1.start.html').pipe(res);
+        fs.createReadStream('./index.html').pipe(res);
+    }else if(pathname=='/clock'){
+        var date = new Date().toLocaleString();
+        res.end(JSON.stringify({date}));
     }else{
         fs.exists('.'+pathname,function (flag) {
             if(flag){
@@ -18,5 +21,5 @@ http.createServer(function (req,res) {
             }
         });
     }
-}).listen(8080,'localhost');
+}).listen(8080);
 
